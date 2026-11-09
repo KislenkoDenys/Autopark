@@ -129,7 +129,10 @@ namespace AutoPark
         {
             string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=AutoParkDB;Trusted_Connection=True;Encrypt=False;";
 
-            Console.WriteLine("Connecting to the database...");
+            var benchmark = new BenchmarkRunner(connectionString);
+            benchmark.RunAll(5000);
+
+            /*Console.WriteLine("Connecting to the database...");
 
             try
             {
@@ -153,7 +156,7 @@ namespace AutoPark
             catch (Exception ex)
             {
                 Console.WriteLine($"\nError: {ex.Message}");
-            }
+            }*/
 
             Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();
