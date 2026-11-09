@@ -129,8 +129,18 @@ namespace AutoPark
         {
             string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=AutoParkDB;Trusted_Connection=True;Encrypt=False;";
 
-            var benchmark = new BenchmarkRunner(connectionString);
-            benchmark.RunAll(5000);
+            /*var benchmark = new BenchmarkRunner(connectionString);
+            benchmark.RunAll(5000);*/
+
+            try
+            {
+                var redis = new RedisService("localhost:6379");
+                redis.RunDemonstration();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Помилка підключення до Redis: {ex.Message}");
+            }
 
             /*Console.WriteLine("Connecting to the database...");
 
